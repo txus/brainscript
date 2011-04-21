@@ -7,7 +7,11 @@ require 'brainscript'
 module CompilerAssertions
 
   def assert_evaluates(expected, code)
-    assert_equal expected, compiler.compile(code)
+    if expected.is_a?(Regexp)
+      assert_match expected, compiler.compile(code)
+    else
+      assert_equal expected, compiler.compile(code)
+    end
   end
 
   private

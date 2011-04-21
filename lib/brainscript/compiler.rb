@@ -7,7 +7,9 @@ class Brainscript::Compiler
   # @param <String> the source code.
   def compile(source)
     ast = transformer.apply(parser.parse(source))
-    ast.compile
+    result = ast.compile.to_s
+    puts result
+    result
   end 
 
   private

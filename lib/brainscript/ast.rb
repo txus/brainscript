@@ -7,8 +7,19 @@ module Brainscript::AST
   end
   
   class Expression < Struct.new(:left, :op, :right)
+    OPS = { 
+      '+' => 'add',
+      '-' => 'sub',
+      '*' => 'mul',
+      '/' => 'div'
+    }
+
     def compile
-      left.compile.send(op, right.compile)
+      self.send OPS[op.to_s], left.compile, right.compile
+    end
+
+    def add(l, r)
+      ">[-<+>]<"
     end
   end
   
