@@ -2,7 +2,7 @@
 module Brainscript::AST
   class IntLit < Struct.new(:int)
     def compile
-      int
+      "+" * int
     end
   end
   
@@ -19,7 +19,25 @@ module Brainscript::AST
     end
 
     def add(l, r)
-      ">[-<+>]<"
+      out = []
+      out << "# Assign a"
+      out << l
+      out << "# Assign b"
+      out << ">" + r + "<"
+      out << "# Compute sum"
+      out << ">[-<+>]<"
+      out.join("\n")
+    end
+
+    def add(l, r)
+      out = []
+      out << "# Assign a"
+      out << l
+      out << "# Assign b"
+      out << ">" + r + "<"
+      out << "# Compute sum"
+      out << ">[-<+>]<"
+      out.join("\n")
     end
   end
   

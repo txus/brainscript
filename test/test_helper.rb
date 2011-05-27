@@ -10,7 +10,7 @@ module CompilerAssertions
     if expected.is_a?(Regexp)
       assert_match expected, compiler.compile(code)
     else
-      assert_equal expected, compiler.compile(code)
+      assert_equal expected, strip_code(compiler.compile(code))
     end
   end
 
@@ -18,6 +18,13 @@ module CompilerAssertions
 
   def compiler
     Brainscript::Compiler.new
+  end
+
+  def strip_code(code)
+    symbols = %w(+ - > < . , [ ])
+    code.each_char.to_a.select do |c|
+      symbols.include? c
+    end.join
   end
 end
 
