@@ -6,4 +6,8 @@ class CompilerTest < MiniTest::Unit::TestCase
     assert_evaluates "+>++<>[-<+>]<", '1 + 2'
   end
 
+  def test_simple_subtraction
+    assert_evaluates "+>++<>[-<->]<", '1 - 2'
+  end
+
 end

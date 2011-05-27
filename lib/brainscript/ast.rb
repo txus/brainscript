@@ -29,14 +29,14 @@ module Brainscript::AST
       out.join("\n")
     end
 
-    def add(l, r)
+    def sub(l, r)
       out = []
       out << "# Assign a"
       out << l
       out << "# Assign b"
       out << ">" + r + "<"
-      out << "# Compute sum"
-      out << ">[-<+>]<"
+      out << "# Compute subtraction"
+      out << ">[-<->]<"
       out.join("\n")
     end
   end
